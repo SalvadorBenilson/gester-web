@@ -1,5 +1,5 @@
 <!--DIV DO CONTEUDO-->
-<div class="container-fluid mt-3 mb-3">
+<div>
 
 <!--BUTTON FECHAR MODAL-->
 <div class="row mt-4">
@@ -20,7 +20,8 @@ Deseja realmente apagar o Publicador número: {{ $id }}
 </div>
 
 <div class="col-md-12">
-    <button type="button" class="btn btn-outline-danger" wire:click.prevent="delete">Apagar</button>
+    <button type="button" class="btn btn-outline-success" wire:click.prevent="delete">Sim</button>
+    <button type="button" class="btn btn-outline-danger" wire:click="fecharModal">Não</button>
 </div>
 
 </div>

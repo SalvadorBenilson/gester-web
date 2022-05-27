@@ -72,27 +72,17 @@ class ControllerPublicador extends Component
     }
 
     
-    public function render()
+    public function new()
     {
-            return view('livewire.publicador.create', [
-
-            ])->layout('layouts.app');
-
             $this->resetInputFields();
-            //$this->modal = true;
-            //$this->view ='create';
-            //$this->title = 'Adicionar Publicador';
-            //$territorio_id = Territorio::find(1);
-            //return $territorio_id->publicador->id;
-
-            //$grupo_id = Grupo::find(1);
-            //return $grupo_id->publicador->id;
-
+            $this->modal = true;
+            $this->view ='create';
+            $this->title = 'Adicionar Publicador';
             $this->territorio_id = DB::table('territorio')->pluck('id');
-            $this->grupo_id = DB::table('grupo')->pluck('id');
+            $this->grupo_id = DB::table('grupo')->pluck('id');       
     }
 
-    public function renderUUU()
+    public function render()
     {
         return view('livewire.publicador.show', [
            

@@ -28,6 +28,6 @@ class Grupo extends Model
 
     public function territorio()
     {
-        return $this->hasOne(Territorio::class, 'territorio_id');
+        return $this->hasOne(Territorio::class);
     }
 }

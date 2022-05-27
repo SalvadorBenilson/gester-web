@@ -74,8 +74,7 @@ class ControllerGrupo extends Component
             $this->view ='create';
             $this->title = 'Adicionar Grupo';
             $this->territorio_id = DB::table('territorio')->pluck('id');
-
-            return $this->territorio_id;
+            return json_encode($this->territorio_id);
     }
 
     public function render()

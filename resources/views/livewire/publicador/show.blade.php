@@ -4,11 +4,11 @@
 <!--DIV DO CONTEUDO FLUID-->
 <div class="container-fluid mt-3">
 
-<!--DIV MODAL
+<!--DIV MODAL-->
 @if($modal)
     @include("livewire.publicador.$view")
 @endif
-FIM DA DIV MODAL-->
+<!--FIM DA DIV MODAL-->
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )

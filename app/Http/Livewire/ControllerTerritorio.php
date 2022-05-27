@@ -84,7 +84,7 @@ class ControllerTerritorio extends Component
         [
             'numero' => $this->numero,
             'tipo' => $this->tipo,
-            'anexo' => $this->anexo->store('anexos'),
+            'anexo' => $this->anexo->store('public/anexos'),
         ]);
 
         session()->flash('message', 

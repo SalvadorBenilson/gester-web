@@ -45,10 +45,12 @@
                <tr>
                     <td>{{ $lista->numero }}</td>
                     <td>{{ $lista->tipo }}</td>
-                    <td><img src="{{ asset(storage/app/anexos/$lista->anexo) }}" class="img-thumbnail rounded" alt=""></td>
+                    <td><img src="{{ URL::asset('storage/app/anexos/$lista->anexo') }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
                     <td>
                         <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Ver/Editar</button>
+                        <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Editar Foto</button>
                         <button type="button" class="btn btn-outline-danger btn-sm" wire:click="deleteview( {{ $lista->id }} )">Apagar</button>
+                        <button type="button" class="btn btn-outline-success btn-sm" wire:click="edit( {{ $lista->id }} )">Baixar</button>
                     </td>
                </tr>
             @endforeach

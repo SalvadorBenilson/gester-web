@@ -1,7 +1,7 @@
-<div>
+<div class="mb-2">
 
 <!--DIV DO CONTEUDO-->
-<div class="container-fluid mt-3 mb-5">
+<div>
 
 <!--BUTTON FECHAR MODAL-->
 <div class="row mt-4">
@@ -17,12 +17,14 @@
 <div class="col-md-12">
 
 <div class="alert alert-danger" role="alert">
-Deseja realmente apagar o Publicador número: {{ $numero }}
+Deseja Realmente Apagar o Território número: {{ $numero }}
 <input type="hidden" placeholder="ID" wire:model="id">
 </div>
 
 <div class="col-md-12">
-    <button type="button" class="btn btn-outline-danger" wire:click.prevent="delete( {{ $territorio_id }})">Apagar</button>
+    <button type="button" class="btn btn-outline-success" wire:click.prevent="delete( {{ $territorio_id }})">Apagar</button>
+    <button type="button" class="btn btn-outline-danger" wire:click="fecharModal">Não</button>
+</div>
 </div>
 
 </div>
@@ -33,5 +35,3 @@ Deseja realmente apagar o Publicador número: {{ $numero }}
 
 </div>
 <!--FIM DA DIV DO CONTEUDO-->
-
-</div>

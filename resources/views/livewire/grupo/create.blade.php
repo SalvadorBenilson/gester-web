@@ -22,7 +22,7 @@
             <div class="col-md-4">
             <label>Territorio Nº</label>
             <select class="form-control" wire:model="territorio_id">
-              @foreach($territorio_id as $lista)        
+              @foreach($ter as $lista)        
                 <option>{{ $lista }}</option>    
               @endforeach  
             </select>
