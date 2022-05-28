@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ControllerPublicador;
 use App\Http\Livewire\ControllerGrupo;
 use App\Http\Livewire\ControllerTerritorio;
+use App\Http\Livewire\ControllerDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/admin', ControllerDashboard::class);
 Route::get('/publicador', ControllerPublicador::class)->name('publicador');
 Route::get('/grupo', ControllerGrupo::class)->name('grupo');
 Route::get('/territorio', ControllerTerritorio::class)->name('territorio');

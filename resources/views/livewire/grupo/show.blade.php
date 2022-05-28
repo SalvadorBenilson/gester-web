@@ -1,6 +1,4 @@
 <div>
-<!--DIV DO CONTEUDO-->
-<div class="container-fluid mt-3">
 
 <!--DIV MODAL-->
 @if($modal)
@@ -10,7 +8,7 @@
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
-<div class="alert alert-success alert-dismissible fade show-sm mt-3" role="alert">
+<div class="alert alert-success alert-dismissible fade show-sm mt-3 text-center" role="alert">
     <strong> {{ session('message') }} </strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -18,7 +16,7 @@
 <!--FIM DA DIV DO PAINEL MESSAGE-->
 
 <!--DIV DO BOTÃO NOVO-->
-    <button type="button" class="btn btn-outline-dark" wire:click="new">
+    <button type="button" class="btn btn-outline-dark" wire:click="new" wire:loading.attr="disabled">
         Novo
     </button>
 <!--FIM DIV DO BOTÃO NOVO-->
@@ -63,7 +61,7 @@
             @empty
             <tr colspan="8">
             <div class="alert alert-warning text-center" role="alert">
-                <strong>Não há Grupo(s) Cadastrado(s)!</strong>
+                <strong>Grupo(s) Não Encontrado(s)!</strong>
             </div>
             </tr>
             @endforelse

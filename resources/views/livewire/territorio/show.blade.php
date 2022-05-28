@@ -2,8 +2,8 @@
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
-<div class="position-relative">
-<div class="alert alert-success d-flex align-items-center sm" role="alert">
+<div class="d-flex justify-content">
+<div class="alert alert-success alert-dismissible text-center" role="alert">
     <strong> {{ session('message') }} </strong>
 </div>
 </div>
@@ -17,7 +17,7 @@
 <!--FIM DA DIV MODAL-->
 
 <!--DIV DO BOTÃO NOVO-->
-    <button type="button" class="btn btn-outline-dark" wire:click="new">
+    <button type="button" class="btn btn-outline-dark" wire:click="new" wire:loading.attr="disabled">
         Novo
     </button>
 <!--FIM DIV DO BOTÃO NOVO-->
@@ -45,7 +45,7 @@
                <tr>
                     <td>{{ $lista->numero }}</td>
                     <td>{{ $lista->tipo }}</td>
-                    <td><img src="{{ URL::asset('storage/app/anexos/$lista->anexo') }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
+                    <td><img src="{{ URL::asset('img/card-image.svg') }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
                     <td>
                         <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Ver/Editar</button>
                         <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Editar Foto</button>
@@ -56,7 +56,7 @@
             @empty
             <tr colspan="4">
             <div class="alert alert-warning text-center" role="alert">
-                <strong>Não há Território(s) Cadastrado(s)!</strong>
+                <strong>Território(s) Não Encontrado(s)!</strong>
             </div>
             </tr>
             @endforelse

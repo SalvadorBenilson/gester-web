@@ -1,7 +1,5 @@
 <div>
 
-<div>
-
 <!--BUTTON FECHAR MODAL-->
 <div class="col">
     <button class="btn-close btn-outline" wire:click="fecharModal"></button>

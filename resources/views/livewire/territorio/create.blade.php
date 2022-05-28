@@ -1,7 +1,11 @@
-<div>
-    
+<!--BUTTON FECHAR MODAL-->
+<div class="col">
+    <button class="btn-close btn-outline" wire:click="fecharModal"></button>
+</div>
+<!--FIM BUTTON FECHAR MODAL-->
+
 <!--FORM-->
-<form class="row g-3 mb-5" wire:submit.prevent="store">
+<form class="row g-3 mb-3" wire:submit.prevent="store">
 
             <div class="col-md-2">
             <label>Número</label>
@@ -23,12 +27,13 @@
             <input type="file" class="form-control form-control-sm" wire:model="anexo">
             @error('anexo') <span class="text-danger error">{{ $message }}</span> @enderror
             @if ($anexo)
-            <img class="img-thumbnail rounded" src="{{ $anexo->temporaryUrl() }}" width="250" height="250">
+            <img class="img-thumbnail rounded mt-2" src="{{ $anexo->temporaryUrl() }}" width="250" height="250">
             @else
-            <span class="badge bg-info text-dark">Nenhuma Imagem Carregada!</span>
+            <img class="img-thumbnail rounded mt-2 img-fluid" src="{{ URL::asset('img/card-image.svg') }}" width="90" height="90">
+            <span class="badge bg-info text-dark mt-2">Nenhuma Imagem Carregada!</span>
             @endif
 
-            <span class="badge rounded-pill bg-success text-dark" wire:loading wire:target="anexo">Fazendo Upload...</span>
+            <span class="badge rounded-pill bg-success text-dark mt-2" wire:loading wire:target="anexo">Fazendo Upload...</span>
             </div>
 
 <!--DIV DOS BOTÕES-->
@@ -40,5 +45,3 @@
 
 </form>
 <!--FIM DO FORM-->
-
-</div>

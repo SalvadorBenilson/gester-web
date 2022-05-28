@@ -39,7 +39,7 @@
             @endif
 
             <!-- Page Content -->
-            <div class="container-fluid mt-5">
+            <div class="container-fluid mt-2">
                 {{ $slot }}
             </div>
             

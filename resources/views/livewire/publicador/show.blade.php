@@ -3,7 +3,7 @@
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
-<div class="alert alert-success alert-dismissible fade show-sm mt-3" role="alert">
+<div class="alert alert-success alert-dismissible fade show-sm mt-3 text-center" role="alert">
     <strong> {{ session('message') }} </strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -64,7 +64,7 @@
             @empty
             <tr colspan="9">
             <div class="alert alert-warning text-center" role="alert">
-                <strong>Não há Publicador(s) Cadastrado(s)!</strong>
+                <strong>Publicador(s)  Não Encontrado(s)!</strong>
             </div>
             </tr>
             @endforelse
