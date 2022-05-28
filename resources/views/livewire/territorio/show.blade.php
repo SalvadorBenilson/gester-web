@@ -41,7 +41,7 @@
                 </tr>
             </thead>          
            <tbody>
-           @foreach ($territorios as $lista)
+           @forelse ($territorios as $lista)
                <tr>
                     <td>{{ $lista->numero }}</td>
                     <td>{{ $lista->tipo }}</td>
@@ -53,7 +53,13 @@
                         <button type="button" class="btn btn-outline-success btn-sm" wire:click="edit( {{ $lista->id }} )">Baixar</button>
                     </td>
                </tr>
-            @endforeach
+            @empty
+            <tr colspan="4">
+            <div class="alert alert-warning text-center" role="alert">
+                <strong>Não há Território(s) Cadastrado(s)!</strong>
+            </div>
+            </tr>
+            @endforelse
            </tbody>
         </table>
         {{ $territorios->links() }}

@@ -1,14 +1,11 @@
 <div>
-<!--DIV DO CONTEUDO-->
 
-<!--DIV DO CONTEUDO FLUID-->
-<div class="container-fluid mt-3">
+<div>
 
 <!--BUTTON FECHAR MODAL-->
 <div class="col">
     <button class="btn-close btn-outline" wire:click="fecharModal"></button>
 </div>
-
 <!--FIM BUTTON FECHAR MODAL-->
 
 <!--FORM-->
@@ -80,8 +77,4 @@
 </form>
 <!--FIM DO FORM-->
 
-<!--FIM DA DIV DO CONTEUDO-FLUID-->
-</div>
-
-<!--FIM DA DIV DO CONTEUDO-->
 </div>

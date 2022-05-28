@@ -46,7 +46,7 @@
                 </tr>
             </thead>          
             <tbody>
-           @foreach ($grupos as $lista)
+           @forelse ($grupos as $lista)
                <tr>
                    <td>{{$lista->numero}}</td>
                    <td>{{$lista->sup}}</td>
@@ -60,7 +60,13 @@
                    <button type="button" class="btn btn-outline-danger btn-sm" wire:click="deleteview( {{ $lista->id }} )">Apagar</button>
                    </td>
                </tr>
-            @endforeach
+            @empty
+            <tr colspan="8">
+            <div class="alert alert-warning text-center" role="alert">
+                <strong>Não há Grupo(s) Cadastrado(s)!</strong>
+            </div>
+            </tr>
+            @endforelse
            </tbody>
         </table>
         {{ $grupos->links() }}

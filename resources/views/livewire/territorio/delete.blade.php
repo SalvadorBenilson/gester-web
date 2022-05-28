@@ -6,7 +6,7 @@
 <!--BUTTON FECHAR MODAL-->
 <div class="row mt-4">
     <div class="col">
-<button type="button" class="btn-close btn-outline" wire:click="fecharModal()"></button>
+<button type="button" class="btn-close btn-outline" wire:click="fecharModal"></button>
     </div>
 </div>
 <!--FIM BUTTON FECHAR MODAL-->

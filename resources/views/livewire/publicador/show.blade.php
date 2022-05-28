@@ -1,15 +1,6 @@
 <div>
 <!--DIV DO CONTEUDO-->
 
-<!--DIV DO CONTEUDO FLUID-->
-<div class="container-fluid mt-3">
-
-<!--DIV MODAL-->
-@if($modal)
-    @include("livewire.publicador.$view")
-@endif
-<!--FIM DA DIV MODAL-->
-
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
 <div class="alert alert-success alert-dismissible fade show-sm mt-3" role="alert">
@@ -19,6 +10,12 @@
 @endif
 <!--FIM DA DIV DO PAINEL MESSAGE-->
 
+<!--DIV MODAL-->
+@if($modal)
+    @include("livewire.publicador.$view")
+@endif
+<!--FIM DA DIV MODAL-->
+
 <!--DIV DO BOTÃO NOVO-->
     <button type="button" class="btn btn-outline-dark" wire:click="new" wire:loading.attr="disabled">
         Novo
@@ -27,7 +24,7 @@
 
 <!--DIV DO CAMPO PESQUISAR-->
 <div class="col-md-4 mt-3 mb-3">
-    <input type="search" class="form-control-sm inline" placeholder="Pesquisar Publicador..." wire:model="search">
+    <input type="search" class="form-control-sm inline" placeholder="Pesquisar Publicador..." wire:model="search" >
 </div>
 <!--FIM DIV DO CAMPO PESQUISAR-->
 
@@ -49,7 +46,7 @@
                 </tr>
             </thead>          
            <tbody>
-           @foreach ($publicadors as $lista)
+           @forelse ($publicadors as $lista)
                <tr>
                    <td>{{$lista->nome}}</td>
                    <td>{{$lista->telefone}}</td>
@@ -64,15 +61,18 @@
                    <button type="button" class="btn btn-outline-danger btn-sm" wire:click="deleteview( {{ $lista->id }} )">Apagar</button>
                    </td>
                </tr>
-            @endforeach
+            @empty
+            <tr colspan="9">
+            <div class="alert alert-warning text-center" role="alert">
+                <strong>Não há Publicador(s) Cadastrado(s)!</strong>
+            </div>
+            </tr>
+            @endforelse
            </tbody>
         </table>
         {{ $publicadors->links() }}
 </div>
 <!--FIM DA DIV DA TABELA-->
-
-<!--FIM DA DIV DO CONTEUDO-FLUID-->
-</div>
 
 <!--FIM DA DIV DO CONTEUDO-->
 </div>
