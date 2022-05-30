@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Grupo;
 use Livewire\Component;
 use App\Models\Publicador;
-use App\Models\Territorio;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +13,6 @@ class ControllerPublicador extends Component
     public $publicador, $publicador_id, $nome, $telefone, $email, $morada, $recebido, $devolver, $territorio_id, $grupo_id;
     public $modal = false;
     public $view = 'show';
-    public $title = 'Lista de Publicador(s)';
     
     use WithPagination;
 
@@ -34,7 +31,7 @@ class ControllerPublicador extends Component
         'grupo_id' => 'required'
     ];
 
-    private function resetInputFields()
+    public function resetInputFields()
     {
         $this->nome = '';
         $this->telefone = '';
@@ -42,8 +39,6 @@ class ControllerPublicador extends Component
         $this->morada = '';
         $this->recebido = '';
         $this->devolver = '';
-        $this->territorio_id = '';
-        $this->grupo_id = '';
     }
 
     public function updated($propertyName)
@@ -77,7 +72,6 @@ class ControllerPublicador extends Component
             $this->resetInputFields();
             $this->modal = true;
             $this->view ='create';
-            $this->title = 'Adicionar Publicador';
             $this->territorio_id = DB::table('territorio')->pluck('id');
             $this->grupo_id = DB::table('grupo')->pluck('id');       
     }

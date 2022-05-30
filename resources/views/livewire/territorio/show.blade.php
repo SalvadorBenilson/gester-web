@@ -1,4 +1,8 @@
 <div>
+<!--DIV DO CONTEUDO-->
+
+<!--DIV FLUID-->
+<div class="container-fluid mt-2">
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
@@ -12,7 +16,7 @@
 
 <!--DIV MODAL-->
 @if($modal)
-    @include("livewire.territorio.$view")
+    @include("livewire.territorio.$view")   
 @endif
 <!--FIM DA DIV MODAL-->
 
@@ -31,7 +35,7 @@
 <!--DIV DA TABELA-->
 <div class="table-responsive">
         {{ $territorios->links() }}
-        <table class="table table-hover table-sm">
+        <table class="table table-sm table-hover">
             <thead>
                 <tr>
                     <th>Número</th>
@@ -66,4 +70,8 @@
 </div>
 <!--FIM DA DIV DA TABELA-->
 
+<!--FIM DA DIV FLUID-->
+</div>
+
+<!--FIM DA DIV DO CONTEUDO-->
 </div>

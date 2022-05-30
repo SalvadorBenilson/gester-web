@@ -15,7 +15,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div>
-                <h3 class="text-info">{{ $publicador }}</h3>
+                <h3 class="text-info">{{ $publicadors }}</h3>
                 <p class="mb-0">Publicador(s)</p>
               </div>
               <div class="align-self-center">
@@ -24,7 +24,7 @@
             </div>
             <div class="px-md-1">
               <div class="progress mt-3 mb-1 rounded" style="height: 7px;">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="{{ $publicador }}"
+                <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="{{ $publicadors }}"
                   aria-valuemin="0"></div>
               </div>
             </div>

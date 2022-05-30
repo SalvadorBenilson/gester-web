@@ -1,10 +1,5 @@
 <div>
-
-<!--DIV MODAL-->
-@if($modal)
-    @include("livewire.grupo.$view")
-@endif
-<!--FIM DA DIV MODAL-->
+<!--DIV DO CONTEUDO-->
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
@@ -14,6 +9,12 @@
 </div>
 @endif
 <!--FIM DA DIV DO PAINEL MESSAGE-->
+
+<!--DIV MODAL-->
+@if($modal)
+    @include("livewire.grupo.$view")
+@endif
+<!--FIM DA DIV MODAL-->
 
 <!--DIV DO BOTÃO NOVO-->
     <button type="button" class="btn btn-outline-dark" wire:click="new" wire:loading.attr="disabled">
@@ -30,7 +31,7 @@
 <!--DIV DA TABELA-->
 <div class="table-responsive">
 {{ $grupos->links() }}
-        <table class="table table-hover table-sm">
+        <table class="table table-sm table-hover">
             <thead>
                 <tr>
                     <th>Número</th>

@@ -30,7 +30,7 @@ class ControllerGrupo extends Component
         'territorio_id' => 'required'
     ];
 
-    private function resetInputFields()
+    public function resetInputFields()
     {
         $this->numero = '';
         $this->quant_pub = '';
@@ -73,8 +73,7 @@ class ControllerGrupo extends Component
             $this->modal = true;
             $this->view ='create';
             $this->title = 'Adicionar Grupo';
-            $this->territorio_id = DB::table('territorio')->pluck('id');
-            return json_encode($this->territorio_id);
+            $this->territorio_id = DB::table('territorio')->pluck('id'); 
     }
 
     public function render()

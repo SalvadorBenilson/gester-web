@@ -26,7 +26,7 @@ class ControllerTerritorio extends Component
         'tipo' => 'required',
     ];
 
-    private function resetInputFields()
+    public function resetInputFields()
     {
         $this->numero = '';
         $this->tipo = '';

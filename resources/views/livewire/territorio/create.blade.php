@@ -1,45 +1,46 @@
 <!--BUTTON FECHAR MODAL-->
 <div class="col">
-    <button class="btn-close btn-outline" wire:click="fecharModal"></button>
+    <button class="btn-close" wire:click="fecharModal"></button>
 </div>
 <!--FIM BUTTON FECHAR MODAL-->
 
 <!--FORM-->
-<form class="row g-3 mb-3" wire:submit.prevent="store">
+<form class="row g-2 mb-5" wire:submit.prevent="store" wire:loading.attr="disabled">
 
-            <div class="col-md-2">
-            <label>Número</label>
-            <input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model="numero">
-            @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>
+<div class="col-md-6">
+<label>Número</label>
+<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model.lazy="numero">
+@error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
+</div>
             
-            <div class="col-md-4">
-            <label>Tipo</label>
-            <select class="form-control form-control-sm" wire:model="tipo">
-            <option value="Pessoal">Pessoal</option>
-            <option value="Grupo">Grupo</option>
-            </select>
-            @error('tipo') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>
+<div class="col-md-6">
+<label>Tipo</label>
+<select class="form-control form-control-sm" wire:model.lazy="tipo">
+<option value="Pessoal">Pessoal</option>
+<option value="Grupo">Grupo</option>
+@error('tipo') <span class="text-danger error">{{ $message }}</span> @enderror
+</div>
 
-            <div class="col-md-6">
-            <label>Anexo</label>
-            <input type="file" class="form-control form-control-sm" wire:model="anexo">
-            @error('anexo') <span class="text-danger error">{{ $message }}</span> @enderror
-            @if ($anexo)
-            <img class="img-thumbnail rounded mt-2" src="{{ $anexo->temporaryUrl() }}" width="250" height="250">
-            @else
-            <img class="img-thumbnail rounded mt-2 img-fluid" src="{{ URL::asset('img/card-image.svg') }}" width="90" height="90">
-            <span class="badge bg-info text-dark mt-2">Nenhuma Imagem Carregada!</span>
-            @endif
+<div class="col-md-6 mt-5">
+<label>Anexo</label>
+<input type="file" class="form-control form-control-sm" wire:model.lazy="anexo">
+@error('anexo') <span class="text-danger error">{{ $message }}</span> @enderror
+</div>
 
-            <span class="badge rounded-pill bg-success text-dark mt-2" wire:loading wire:target="anexo">Fazendo Upload...</span>
-            </div>
+<div class="col-md-6">
+@if ($anexo)
+<img class="img-thumbnail img-fluid" src="{{ $anexo->temporaryUrl() }}" width="250" height="250">
+@else
+<img class="img-thumbnail  img-fluid" src="{{ URL::asset('img/card-image.svg') }}" width="90" height="90">
+<span class="badge bg-info text-dark">Nenhuma Imagem Carregada!</span>
+@endif
+<span class="badge rounded-pill bg-success text-dark" wire:loading wire:target="anexo">Fazendo Upload...</span>
+</div>
 
 <!--DIV DOS BOTÕES-->
-<div class="col-md-12 position-relative" wire:loading.attr="disabled" wire:target="store">
-    <button class="btn btn-outline-success" type="submit">Salvar</button>
-    <button class="btn btn-outline-warning" wire:click="new">Limpar Formulario</button>           
+<div class="btn-group mt-3">
+    <button class="btn btn-success col-md-8 text-dark" type="submit">Salvar</button>
+    <button class="btn btn-warning col-md-4 text-dark" wire:click.prevent="resetInputFields">Limpar Formulario</button>           
 </div>
 <!--FIM DA DIV DOS BOTÕES-->
 

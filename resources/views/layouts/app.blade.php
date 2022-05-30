@@ -39,10 +39,8 @@
             @endif
 
             <!-- Page Content -->
-            <div class="container-fluid mt-2">
                 {{ $slot }}
-            </div>
-            
+ 
 
         @stack('modals')
 

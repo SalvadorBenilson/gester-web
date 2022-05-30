@@ -16,12 +16,11 @@ class ControllerDashboard extends Component
     public function render()
     {
         return view('livewire.dashboard', [
-
-            'publicador' => Publicador::count(),
+            'publicadors' => Publicador::count(),
             'grupo' => Grupo::count(),
             'territorio' => Territorio::count(),
             'devolver' => Publicador::where('devolver', '>', now())->count()
-            
+
         ])->layout('layouts.app');
     }
 }
