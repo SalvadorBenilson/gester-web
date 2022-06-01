@@ -1,10 +1,18 @@
 <x-guest-layout>
+
+@foreach ($errors->all() as $error)
+  <div class="alert alert-danger d-flex justify-content" role="alert">
+    <ul class="list-disc list-inside text-sm text-center">
+      <li>{{ $error }}</li>
+    </ul>
+  </div>
+@endforeach
+
 <main class="form-signin text-center">
         <div class="mb-4 text-sm text-gray-600">
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
         </div>
 
-        <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf

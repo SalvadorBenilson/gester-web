@@ -1,17 +1,25 @@
 <x-guest-layout>
-<main class="form-signin text-center">
-        <x-jet-validation-errors class="mb-4" />
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+@foreach ($errors->all() as $error)
+  <div class="alert alert-danger d-flex justify-content" role="alert">
+    <ul class="list-disc list-inside text-sm text-center">
+      <li>{{ $error }}</li>
+    </ul>
+  </div>
+@endforeach
+
+<main class="form-signin text-center">
+
+@if (session('status'))
+  <div class="mb-4 font-medium text-sm text-green-600">
+    {{ session('status') }}
+  </div>
+@endif
 
 <form method="POST" action="{{ route('login') }}">
-@csrf
+  @csrf
 
-    <img class="mb-4" src="{{ asset('/img/bootstrap.svg') }}" alt="" width="72" height="57">
+    <img src="{{ asset('/img/briefcase-fill.svg') }}" alt="Bootstrap" width="50" height="50">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">

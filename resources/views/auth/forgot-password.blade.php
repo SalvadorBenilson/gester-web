@@ -1,4 +1,13 @@
 <x-guest-layout>
+
+@foreach ($errors->all() as $error)
+  <div class="alert alert-danger d-flex justify-content" role="alert">
+    <ul class="list-disc list-inside text-sm text-center">
+      <li>{{ $error }}</li>
+    </ul>
+  </div>
+@endforeach
+
 <main class="form-signin text-center">
         <div class="mb-4 text-sm text-gray-600">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
@@ -9,8 +18,6 @@
                 {{ session('status') }}
             </div>
         @endif
-
-    <x-jet-validation-errors class="mb-4" />
 
     <form method="POST" action="{{ route('password.email') }}">
             @csrf

@@ -12,11 +12,15 @@
         <link rel="stylesheet" href="{{ URL::asset('css/signin.css') }}">
 </head>
 
-<body>
+<body class="bg-white">
 <!--DIV DA NAV MENU-->
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+ <nav class="navbar navbar-expand-sm navbar-dark bg-light" aria-label="Third navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ url('/') }}">GESTER</a>
+    <img src="{{ asset('/img/briefcase-fill.svg') }}" alt="Bootstrap" width="30" height="30">
+      <a class="navbar-brand" href="{{ url('/') }}">
+      
+        <h3 class="text-dark text-start">GESTER</h3>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,9 +33,11 @@
         @auth
         <a href="{{ url('/dashboard') }}"><button type="button" class="btn btn-outline-light me-2">Dashboard</button></a>
         @else
-        <a href="{{ url('/login') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+        <a class="text-decoration-none text-end" href="{{ url('/login') }}">
+            <img src="{{ asset('/img/lock-fill.svg') }}" alt="Bootstrap" width="25" height="25">
+        </a>
         @if (Route::has('register'))
-        <a href="{{ url('/register') }}"><button type="button" class="btn btn-outline-light me-2">Registra-se Aqui</button></a>  
+        <a href="{{ url('/register') }}"><button type="button" class="btn btn-outline-dark me-2 text-sm">Criar conta</button></a>  
         @endif
 
         @endauth

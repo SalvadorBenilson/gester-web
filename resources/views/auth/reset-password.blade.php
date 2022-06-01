@@ -1,5 +1,14 @@
 <x-guest-layout>
-        <x-jet-validation-errors class="mb-4" />
+
+@foreach ($errors->all() as $error)
+  <div class="alert alert-danger d-flex justify-content" role="alert">
+    <ul class="list-disc list-inside text-sm text-center">
+      <li>{{ $error }}</li>
+    </ul>
+  </div>
+@endforeach
+
+<main class="form-signin text-center">
 
         <form method="POST" action="{{ route('password.update') }}">
             @csrf

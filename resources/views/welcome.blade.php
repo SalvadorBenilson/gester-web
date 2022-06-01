@@ -44,4 +44,8 @@
   </div>
 <!--FIM DE PAINEL PRINCIPAL-->
 
+<!--FOOTER-->
+
+<!--FOOTER-->
+
 </x-guest-layout>
