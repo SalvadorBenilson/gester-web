@@ -13,14 +13,14 @@
 </head>
 
 <body class="bg-white">
+
 <!--DIV DA NAV MENU-->
- <nav class="navbar navbar-expand-sm navbar-dark bg-light" aria-label="Third navbar example">
+ <nav class="navbar navbar-expand bg-light" aria-label="Third navbar example">
     <div class="container-fluid">
-    <img src="{{ asset('/img/briefcase-fill.svg') }}" alt="Bootstrap" width="30" height="30">
-      <a class="navbar-brand" href="{{ url('/') }}">
-      
-        <h3 class="text-dark text-start">GESTER</h3>
-      </a>
+    <a class="navbar-brand" href="{{ url('/') }}">
+      <img src="{{ asset('/img/briefcase-fill.svg') }}" alt="Bootstrap" width="25" height="25" class="d-inline-block align-text-top">
+      GESTER
+    </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

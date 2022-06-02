@@ -1,6 +1,9 @@
 <div>
 <!--DIV DO CONTEUDO-->
 
+<!--DIV FLUID-->
+<div class="mt-2">
+
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
 <div class="alert alert-success alert-dismissible fade show-sm mt-3 text-center" role="alert">
@@ -74,6 +77,8 @@
 
 </div>
 <!--FIM DA DIV DO CONTEUDO-->
+
+</div>
 
 </div>
 

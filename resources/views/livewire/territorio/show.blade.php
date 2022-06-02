@@ -2,7 +2,7 @@
 <!--DIV DO CONTEUDO-->
 
 <!--DIV FLUID-->
-<div class="container-fluid mt-2">
+<div class="mt-2">
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
