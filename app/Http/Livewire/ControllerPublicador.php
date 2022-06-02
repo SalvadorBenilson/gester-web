@@ -25,8 +25,8 @@ class ControllerPublicador extends Component
         'telefone' => 'required|max:11|min:11',
         'email' => 'required|string|email',
         'morada' => 'required|min:10|max:50',
-        'recebido' => 'required|date',
-        'devolver' => 'required|date',
+        'recebido' => 'required|date_format:d/m/y',
+        'devolver' => 'required|date_format:d/m/y|after:recebido',
         'territorio_id' => 'required',
         'grupo_id' => 'required'
     ];
