@@ -31,7 +31,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/admin', ControllerDashboard::class);
+Route::get('/admin', ControllerDashboard::class)->name('admin');
 Route::get('/publicador', ControllerPublicador::class)->name('publicador');
 Route::get('/grupo', ControllerGrupo::class)->name('grupo');
 Route::get('/territorio', ControllerTerritorio::class)->name('territorio');
