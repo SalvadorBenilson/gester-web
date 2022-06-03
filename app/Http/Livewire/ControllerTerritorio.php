@@ -22,7 +22,7 @@ class ControllerTerritorio extends Component
     public $search = '';
 
     protected $rules = [
-        'numero' => 'required',
+        'numero' => 'required|unique:territorio,numero',
         'tipo' => 'required',
     ];
 
@@ -70,7 +70,8 @@ class ControllerTerritorio extends Component
     {
         return view('livewire.territorio.show', [
            
-            'territorios' => Territorio::where('numero', 'like', '%'.$this->search.'%')->paginate(10)
+            'territorios' => Territorio::where('numero', 'like', '%'.$this->search.'%')
+            ->paginate(10)
         ])->layout('layouts.app');
     }
 

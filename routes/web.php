@@ -26,12 +26,16 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', ControllerDashboard::class)
+    ->name('dashboard');
+
+    Route::get('/publicador', ControllerPublicador::class)
+    ->name('publicador');
+
+    Route::get('/grupo', ControllerGrupo::class)
+    ->name('grupo');
+    
+    Route::get('/territorio', ControllerTerritorio::class)
+    ->name('territorio');
 });
 
-Route::get('/admin', ControllerDashboard::class)->name('admin');
-Route::get('/publicador', ControllerPublicador::class)->name('publicador');
-Route::get('/grupo', ControllerGrupo::class)->name('grupo');
-Route::get('/territorio', ControllerTerritorio::class)->name('territorio');

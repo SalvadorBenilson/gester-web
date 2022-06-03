@@ -15,9 +15,11 @@
 <!--FIM DA DIV DO PAINEL MESSAGE-->
 
 <!--DIV MODAL-->
+<div>
 @if($modal)
     @include("livewire.territorio.$view")   
 @endif
+</div>
 <!--FIM DA DIV MODAL-->
 
 <!--DIV DO BOTÃO NOVO-->
@@ -49,12 +51,13 @@
                <tr>
                     <td>{{ $lista->numero }}</td>
                     <td>{{ $lista->tipo }}</td>
-                    <td><img src="{{ URL::asset('img/card-image.svg') }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
+                    <td><img src="{{ url($lista->anexo) }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Ver/Editar</button>
-                        <button type="button" class="btn btn-outline-warning btn-sm" wire:click="edit( {{ $lista->id }} )">Editar Foto</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm" wire:click="deleteview( {{ $lista->id }} )">Apagar</button>
-                        <button type="button" class="btn btn-outline-success btn-sm" wire:click="edit( {{ $lista->id }} )">Baixar</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20"></button>
+                        <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20"></button>
+                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="download( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
+                    </div>
                     </td>
                </tr>
             @empty

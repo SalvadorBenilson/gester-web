@@ -21,13 +21,13 @@ class ControllerPublicador extends Component
     public $search = '';
 
     protected $rules = [
-        'nome' => 'required|string|max:255',
-        'telefone' => 'required|max:11|min:11',
-        'email' => 'required|string|email',
+        'nome' => 'required|string|max:255|unique:publicador,nome',
+        'telefone' => 'required|max:11|min:11|unique:publicador,telefone',
+        'email' => 'required|string|email|unique:publicador,email',
         'morada' => 'required|min:10|max:50',
-        'recebido' => 'required|date_format:d/m/y',
-        'devolver' => 'required|date_format:d/m/y|after:recebido',
-        'territorio_id' => 'required',
+        'recebido' => 'required|date',
+        'devolver' => 'required|date|after:recebido',
+        'territorio_id' => 'required|unique:publicador,territorio_id',
         'grupo_id' => 'required'
     ];
 

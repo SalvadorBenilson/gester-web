@@ -18,9 +18,9 @@
 <body>
     
 <!--NAV BAR-->
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
-  <a class="navbar-brand" href="{{ url('/admin') }}">
+  <a class="navbar-brand" href="{{ url('/dashboard') }}">
     <img src="{{ asset('/img/briefcase-fill.svg') }}" alt="Bootstrap" width="25" height="25" class="d-inline-block align-text-top">
     GESTER
     </a>
@@ -29,7 +29,7 @@
     </button>
     <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-      <a class="nav-link" href="{{ url('/admin') }}">
+      <a class="nav-link" href="{{ url('/dashboard') }}">
       <img src="{{ asset('/img/activity.svg') }}" alt="Bootstrap" width="20" height="20">
           DASHBOARD
         </a>

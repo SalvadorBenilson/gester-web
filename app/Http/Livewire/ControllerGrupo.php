@@ -21,13 +21,13 @@ class ControllerGrupo extends Component
     public $search = '';
 
     protected $rules = [
-        'numero' => 'required|max:2',
+        'numero' => 'required|max:2|unique:grupo,numero',
         'quant_pub' => 'required|max:2',
         'sup' => 'required|string|max:255',
         'aju' => 'required|string|max:255',
         'tel_sup' => 'required|max:11|min:11',
         'tel_aju' => 'required|max:11|min:11',
-        'territorio_id' => 'required'
+        'territorio_id' => 'required|unique:grupo,territorio_id'
     ];
 
     public function resetInputFields()
