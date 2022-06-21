@@ -22,7 +22,7 @@
 <div class="col-md-4">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id" value="old{{ $territorio_id }}">       
-@forelse ($t_id as $lista)       
+@forelse ($tt_id as $lista)       
     <option value="{{ $lista }}">{{ $lista }}</option>
 @empty
 

@@ -15,7 +15,7 @@
 
 <div class="col-md-6">
 <label>Morada</label>
-<input x-mask="*" type="text" class="form-control form-control-sm" placeholder="Morada" wire:model.lazy="morada" value="old{{ $morada }}">
+<input type="text" class="form-control form-control-sm" placeholder="Morada" wire:model.lazy="morada" value="old{{ $morada }}">
 @error('morada') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
@@ -46,7 +46,7 @@
 <div class="col-md-6">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id" value="old{{ $territorio_id }}">       
-@forelse ($t_id as $lista)       
+@forelse ($tt_id as $lista)       
     <option value="{{ $lista }}">{{ $lista }}</option>
 @empty
 
@@ -58,7 +58,7 @@
 <div class="col-md-6">
 <label>Grupo Nº</label>
 <select class="form-control form-control-sm" wire:model.lazy="grupo_id" value="old{{ $grupo_id }}">
-@forelse ($grupo_id as $lista)       
+@forelse ($gt_id as $lista)       
     <option value="{{ $lista }}">{{ $lista }}</option>
 @empty
     

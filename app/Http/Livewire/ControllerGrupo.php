@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ControllerGrupo extends Component
 {
-    public $grupo, $grupo_id, $numero, $quant_pub, $sup, $aju, $tel_sup, $tel_aju, $territorio_id, $t_id;
+    public $grupo, $grupo_id, $numero, $quant_pub, $sup, $aju, $tel_sup, $tel_aju, $territorio_id, $t_id, $tt_id;
     public $modal = false;
     public $view = 'show';
     public $title = 'Lista de Grupo(s)';
@@ -22,13 +22,13 @@ class ControllerGrupo extends Component
     public $search = '';
 
     protected $rules = [
-        'numero' => 'required|max:2|unique:grupo,numero',
+        'numero' => 'required|max:2',
         'quant_pub' => 'required|max:2',
         'sup' => 'required|string|max:255',
         'aju' => 'required|string|max:255',
         'tel_sup' => 'required|max:11|min:11',
         'tel_aju' => 'required|max:11|min:11',
-        'territorio_id' => 'required|unique:grupo,territorio_id'
+        'territorio_id' => 'required'
     ];
 
     public function resetInputFields()
@@ -76,6 +76,7 @@ class ControllerGrupo extends Component
             $this->title = 'Adicionar Grupo';
             $this->territorio_id = Territorio::pluck('id'); 
             $this->t_id = explode(',', $this->territorio_id);
+            $this->tt_id = preg_replace('/[^0-9]/', '', $this->t_id); 
     }
 
     public function render()

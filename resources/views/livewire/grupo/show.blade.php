@@ -6,9 +6,10 @@
 
 <!--DIV DO PAINEL MESSAGE-->
 @if( session()->has('message') )
-<div class="alert alert-success alert-dismissible fade show-sm mt-3 text-center" role="alert">
+<div class="d-flex justify-content">
+<div class="alert alert-success alert-dismissible text-center" role="alert">
     <strong> {{ session('message') }} </strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 </div>
 @endif
 <!--FIM DA DIV DO PAINEL MESSAGE-->

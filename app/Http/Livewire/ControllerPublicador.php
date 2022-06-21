@@ -11,7 +11,7 @@ use App\Models\Grupo;
 class ControllerPublicador extends Component
 {
 
-    public $publicador, $publicador_id, $nome, $telefone, $email, $morada, $recebido, $devolver, $territorio_id, $grupo_id, $t_id, $g_id;
+    public $publicador, $publicador_id, $nome, $telefone, $email, $morada, $recebido, $devolver, $territorio_id, $grupo_id, $t_id, $g_id, $tt_id, $gt_id;
     public $modal = false;
     public $view = 'show';
     
@@ -29,7 +29,7 @@ class ControllerPublicador extends Component
         'recebido' => 'required|date',
         'devolver' => 'required|date|after:recebido',
         'territorio_id' => 'required|unique:publicador,territorio_id',
-        'grupo_id' => 'required|integer'
+        'grupo_id' => 'required'
     ];
 
     public function resetInputFields()
@@ -77,6 +77,8 @@ class ControllerPublicador extends Component
             $this->grupo_id = Grupo::pluck('id');      
             $this->t_id = explode(',', $this->territorio_id);
             $this->g_id = explode(',', $this->grupo_id);
+            $this->tt_id = preg_replace('/[^0-9]/', '', $this->t_id); 
+            $this->gt_id = preg_replace('/[^0-9]/', '', $this->g_id); 
     }
 
     public function render()
