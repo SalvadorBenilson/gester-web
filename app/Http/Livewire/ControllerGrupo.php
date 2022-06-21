@@ -4,12 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Grupo;
+use App\Models\Territorio;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
 class ControllerGrupo extends Component
 {
-    public $grupo, $grupo_id, $numero, $quant_pub, $sup, $aju, $tel_sup, $tel_aju, $territorio_id;
+    public $grupo, $grupo_id, $numero, $quant_pub, $sup, $aju, $tel_sup, $tel_aju, $territorio_id, $t_id;
     public $modal = false;
     public $view = 'show';
     public $title = 'Lista de Grupo(s)';
@@ -73,7 +74,8 @@ class ControllerGrupo extends Component
             $this->modal = true;
             $this->view ='create';
             $this->title = 'Adicionar Grupo';
-            $this->territorio_id = DB::table('territorio')->pluck('id'); 
+            $this->territorio_id = Territorio::pluck('id'); 
+            $this->t_id = explode(',', $this->territorio_id);
     }
 
     public function render()
@@ -102,7 +104,7 @@ class ControllerGrupo extends Component
             ]);
     
             session()->flash('message', 
-            $this->publicador_id ? 
+            $this->grupo_id ? 
             'Grupo Actualizado com Sucesso!' : 'Grupo Cadastrado com Sucesso!');
             $this->resetInputFields();
             $this->fecharModal();
@@ -141,6 +143,5 @@ class ControllerGrupo extends Component
         $this->numero = $grupo->numero;
         $this->modal = true;
         $this->view = 'delete';
-        $this->title = 'Apagar Grupo';
     }
 }

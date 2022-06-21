@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Territorio;
+use Illuminate\Support\Facades\Storage;
 
 class ControllerTerritorio extends Component
 {
@@ -123,6 +124,12 @@ class ControllerTerritorio extends Component
         $this->numero = $territorio->numero;
         $this->modal = true;
         $this->view = 'delete';
-        $this->title = 'Apagar Territorio';
+    }
+
+    public function download($id)
+    {   
+        $territorio = Territorio::findOrFail($id);
+
+        Storage::download($territorio->anexo);
     }
 }

@@ -3,14 +3,15 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Publicador;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
+use App\Models\Publicador;
+use App\Models\Territorio;
+use App\Models\Grupo;
 
 class ControllerPublicador extends Component
 {
 
-    public $publicador, $publicador_id, $nome, $telefone, $email, $morada, $recebido, $devolver, $territorio_id, $grupo_id;
+    public $publicador, $publicador_id, $nome, $telefone, $email, $morada, $recebido, $devolver, $territorio_id, $grupo_id, $t_id, $g_id;
     public $modal = false;
     public $view = 'show';
     
@@ -21,14 +22,14 @@ class ControllerPublicador extends Component
     public $search = '';
 
     protected $rules = [
-        'nome' => 'required|string|max:255|unique:publicador,nome',
+        'nome' => 'required|string|max:255',
         'telefone' => 'required|max:11|min:11|unique:publicador,telefone',
         'email' => 'required|string|email|unique:publicador,email',
         'morada' => 'required|min:10|max:50',
         'recebido' => 'required|date',
         'devolver' => 'required|date|after:recebido',
         'territorio_id' => 'required|unique:publicador,territorio_id',
-        'grupo_id' => 'required'
+        'grupo_id' => 'required|integer'
     ];
 
     public function resetInputFields()
@@ -72,8 +73,10 @@ class ControllerPublicador extends Component
             $this->resetInputFields();
             $this->modal = true;
             $this->view ='create';
-            $this->territorio_id = DB::table('territorio')->pluck('id');
-            $this->grupo_id = DB::table('grupo')->pluck('id');       
+            $this->territorio_id = Territorio::pluck('id');
+            $this->grupo_id = Grupo::pluck('id');      
+            $this->t_id = explode(',', $this->territorio_id);
+            $this->g_id = explode(',', $this->grupo_id);
     }
 
     public function render()
@@ -142,6 +145,11 @@ class ControllerPublicador extends Component
         $this->nome = $publicador->nome;
         $this->modal = true;
         $this->view = 'delete';
-        $this->title = 'Apagar Publicador';
+    }
+
+    // Metodo que calcula a data de devoluação para 4 meses ou seja 120 dias depois da data escolhida do recebido
+    public function calcularDataDevolucao()
+    {
+        $this->devolver = $this->recebido->day('120');
     }
 }

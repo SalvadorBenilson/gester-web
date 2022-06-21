@@ -45,7 +45,7 @@
 <!--DIV DOS BOTÕES-->
 <div class="btn-group mt-5">
     <button class="btn btn-success col-md-8 text-white" type="submit">Salvar</button>
-    <button class="btn btn-warning col-md-4 text-dark" wire:click.prevent="resetInputFields">Limpar Formulario</button>           
+    <button class="btn btn-warning col-md-4 text-dark" wire:click.prevent="resetInputFields">Limpar</button>           
 </div>
 <!--FIM DA DIV DOS BOTÕES-->
 

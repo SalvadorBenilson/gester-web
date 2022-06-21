@@ -31,8 +31,6 @@
     <input type="search" class="form-control-sm inline" placeholder="Pesquisar Publicador..." wire:model="search" >
 </div>
 <!--FIM DIV DO CAMPO PESQUISAR-->
-
-<!--DIV DA TABELA-->
 <div class="table-responsive">
         {{ $publicadors->links() }}
         <table class="table table-sm table-hover">
@@ -64,7 +62,7 @@
                    <div class="btn-group">
                         <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                         <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20"></button>
-                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
+                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="download( {{ $lista->anexo }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                     </div>
                    </td>
                </tr>

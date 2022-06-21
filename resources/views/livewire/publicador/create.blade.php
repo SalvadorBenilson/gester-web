@@ -33,7 +33,7 @@
 
 <div class="col-md-6">
 <label>Recebido em:</label>
-<input x-mask="99/99/9999" type="date" class="form-control form-control-sm" wire:model.lazy="recebido" value="old{{ $recebido }}">
+<input x-mask="99/99/9999" type="date" class="form-control form-control-sm" wire:model.lazy="recebido" value="old{{ $recebido }}" wire.keydown.down="calcularDataDevolucao">
 @error('recebido') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
@@ -46,8 +46,8 @@
 <div class="col-md-6">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id" value="old{{ $territorio_id }}">       
-@forelse ($territorio_id as $lista)       
-    <option>{{ $lista }}</option>
+@forelse ($t_id as $lista)       
+    <option value="{{ $lista }}">{{ $lista }}</option>
 @empty
 
 @endforelse    
@@ -59,7 +59,7 @@
 <label>Grupo Nº</label>
 <select class="form-control form-control-sm" wire:model.lazy="grupo_id" value="old{{ $grupo_id }}">
 @forelse ($grupo_id as $lista)       
-    <option>{{ $lista }}</option>
+    <option value="{{ $lista }}">{{ $lista }}</option>
 @empty
     
 @endforelse      
@@ -70,7 +70,7 @@
 <!--DIV DOS BOTÕES-->
 <div class="btn-group mt-5">
     <button class="btn btn-success col-md-8 text-white" type="submit">Salvar</button>
-    <button class="btn btn-warning col-md-4 text-dark" wire:click="resetInputFields">Limpar Formulario</button>           
+    <button class="btn btn-warning col-md-4 text-dark" wire:click="resetInputFields">Limpar</button>           
 </div>
 <!--FIM DA DIV DOS BOTÕES-->
 

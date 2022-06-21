@@ -24,11 +24,11 @@ class Publicador extends Model
 
     public function territorio()
     {
-        return $this->hasOne(Territorio::class, 'territorio_id');
+        return $this->hasOne(Territorio::class);
     }
 
     public function grupo()
     {
-        return $this->hasOne(Grupo::class, 'grupo_id');
+        return $this->hasOne(Grupo::class);
     }
 }
