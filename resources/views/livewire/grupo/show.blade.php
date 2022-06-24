@@ -15,9 +15,11 @@
 <!--FIM DA DIV DO PAINEL MESSAGE-->
 
 <!--DIV MODAL-->
+<div>
 @if($modal)
     @include("livewire.grupo.$view")
 @endif
+</div>
 <!--FIM DA DIV MODAL-->
 
 <!--DIV DO BOTÃO NOVO-->
@@ -62,7 +64,6 @@
                    <div class="btn-group">
                         <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                         <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20"></button>
-                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                     </div>
                    </td>
                </tr>

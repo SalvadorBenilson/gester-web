@@ -86,7 +86,7 @@ class ControllerTerritorio extends Component
         [
             'numero' => $this->numero,
             'tipo' => $this->tipo,
-            'anexo' => $this->anexo->store('public/anexos'),
+            'anexo' => $this->anexo->store('anexos'),
         ]);
 
         session()->flash('message', 
@@ -126,10 +126,17 @@ class ControllerTerritorio extends Component
         $this->view = 'delete';
     }
 
+    public function anexo($id)
+    {   
+        $territorio = Territorio::findOrFail($id);
+
+        return $territorio->anexo;
+    }
+
     public function download($id)
     {   
         $territorio = Territorio::findOrFail($id);
 
-        Storage::download($territorio->anexo);
+        return Storage::download($territorio->anexo);
     }
 }

@@ -27,7 +27,7 @@
 
 <div class="col-md-6">
 <label>Email</label>
-<input x-mask="*" type="email" class="form-control form-control-sm" placeholder="Email" wire:model.lazy="email" value="old{{ $email }}">
+<input type="email" class="form-control form-control-sm" placeholder="Email" wire:model.lazy="email" value="old{{ $email }}">
 @error('email') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
@@ -45,11 +45,11 @@
 
 <div class="col-md-6">
 <label>Territorio Nº</label>
-<select class="form-control form-control-sm" wire:model="territorio_id" value="old{{ $territorio_id }}">       
+<select class="form-control form-control-sm" wire:model="territorio_id">       
 @forelse ($tt_id as $lista)       
-    <option value="{{ $lista }}">{{ $lista }}</option>
+    <option  value="old{{ $territorio_id }}">{{ $lista }}</option>
 @empty
-
+    <option desable>Sem Território.</option>
 @endforelse    
 </select>
 @error('territorio_id') <span class="text-danger error">{{ $message }}</span> @enderror
@@ -57,11 +57,11 @@
 
 <div class="col-md-6">
 <label>Grupo Nº</label>
-<select class="form-control form-control-sm" wire:model.lazy="grupo_id" value="old{{ $grupo_id }}">
+<select class="form-control form-control-sm" wire:model.lazy="grupo_id">
 @forelse ($gt_id as $lista)       
-    <option value="{{ $lista }}">{{ $lista }}</option>
+    <option  value="old{{ $grupo_id }}">{{ $lista }}</option>
 @empty
-    
+    <option desable>Sem Grupo.</option>
 @endforelse      
 </select>
 @error('grupo_id') <span class="text-danger error">{{ $message }}</span> @enderror

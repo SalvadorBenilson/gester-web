@@ -23,12 +23,12 @@ class ControllerPublicador extends Component
 
     protected $rules = [
         'nome' => 'required|string|max:255',
-        'telefone' => 'required|max:11|min:11|unique:publicador,telefone',
-        'email' => 'required|string|email|unique:publicador,email',
+        'telefone' => 'required|max:11|min:11',
+        'email' => 'required|string|email',
         'morada' => 'required|min:10|max:50',
         'recebido' => 'required|date',
         'devolver' => 'required|date|after:recebido',
-        'territorio_id' => 'required|unique:publicador,territorio_id',
+        'territorio_id' => 'required',
         'grupo_id' => 'required'
     ];
 
@@ -77,8 +77,8 @@ class ControllerPublicador extends Component
             $this->grupo_id = Grupo::pluck('id');      
             $this->t_id = explode(',', $this->territorio_id);
             $this->g_id = explode(',', $this->grupo_id);
-            $this->tt_id = preg_replace('/[^0-9]/', '', $this->t_id); 
-            $this->gt_id = preg_replace('/[^0-9]/', '', $this->g_id); 
+            $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
+            $this->gt_id = preg_replace('/[^0-9]/', ' ', $this->g_id); 
     }
 
     public function render()
@@ -118,7 +118,7 @@ class ControllerPublicador extends Component
     {
         $publicador = Publicador::findOrFail($id);
 
-        $this->id = $id;
+        $this->publicador_id = $id;
         $this->nome = $publicador->nome;
         $this->telefone = $publicador->telefone;
         $this->email = $publicador->email;
@@ -130,6 +130,13 @@ class ControllerPublicador extends Component
         $this->modal = true;
         $this->view = 'edit';
         $this->title = 'Editar Publicador';
+
+        $this->territorio_id = Territorio::pluck('id');
+        $this->grupo_id = Grupo::pluck('id');      
+        $this->t_id = explode(',', $this->territorio_id);
+        $this->g_id = explode(',', $this->grupo_id);
+        $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
+        $this->gt_id = preg_replace('/[^0-9]/', ' ', $this->g_id); 
     }
 
     public function delete($id)

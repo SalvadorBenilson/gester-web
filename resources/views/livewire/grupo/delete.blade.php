@@ -1,33 +1,15 @@
-<!--DIV DO CONTEUDO-->
-<div class="container-fluid mt-3 mb-3">
-
-<!--BUTTON FECHAR MODAL-->
-<div class="row mt-4">
-    <div class="col">
-<button type="button" class="btn-close btn-outline" wire:click="fecharModal()"></button>
-    </div>
+<!--DIV DO CONTEÚDO-->
+<div class="d-flex justify-content mt-2">
+<div class="alert alert-danger alert-dismissible text-center" role="alert">
+        <p>Deseja Realmente Apagar o Grupo Número {{ $numero }}</p>
+    <input type="hidden" placeholder="id" wire:model.lazy="id">
 </div>
-<!--FIM BUTTON FECHAR MODAL-->
-
-<!--DA DIV DA LINHA-->
-<div class="row">
-<!--DIV DO ALERT-->
-<div class="col-md-12">
-
-<div class="alert alert-danger" role="alert">
-Deseja realmente apagar o Grupo número: {{ $numero }}
-<input type="hidden" placeholder="ID" wire:model="grupo_id">
 </div>
+<!--FIM DA DIV DO CONTEÚDO-->
 
-<div class="col-md-12">
-    <button type="button" class="btn btn-outline-danger" wire:click.prevent="delete">Apagar</button>
+<!--DIV DOS BOTÕES-->
+<div class="btn-group mt-1 mb-5">
+    <button class="btn btn-success text-dark" wire:click="delete( {{ $grupo_id }})" wire:loading.attr="disabled">Sim</button>
+    <button class="btn btn-warning text-dark" wire:click="fecharModal">Não</button>           
 </div>
-
-</div>
-<!--FIM DA DIV DO ALERT-->
-
-</div>
-<!--FIM DA DIV DA LINHA-->
-
-</div>
-<!--FIM DA DIV DO CONTEUDO-->
+<!--FIM DA DIV DOS BOTÕES-->

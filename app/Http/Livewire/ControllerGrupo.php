@@ -76,7 +76,7 @@ class ControllerGrupo extends Component
             $this->title = 'Adicionar Grupo';
             $this->territorio_id = Territorio::pluck('id'); 
             $this->t_id = explode(',', $this->territorio_id);
-            $this->tt_id = preg_replace('/[^0-9]/', '', $this->t_id); 
+            $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
     }
 
     public function render()

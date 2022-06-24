@@ -15,9 +15,11 @@
 <!--FIM DA DIV DO PAINEL MESSAGE-->
 
 <!--DIV MODAL-->
+<div>
 @if($modal)
     @include("livewire.publicador.$view")
 @endif
+</div>
 <!--FIM DA DIV MODAL-->
 
 <!--DIV DO BOTÃO NOVO-->
@@ -54,15 +56,14 @@
                    <td>{{$lista->telefone}}</td>
                    <td>{{$lista->email}}</td>
                    <td>{{$lista->morada}}</td>
-                   <td>{{$lista->territorio}}</td>
-                   <td>{{$lista->grupo}}</td>
+                   <td>{{$lista->territorio_id}}</td>
+                   <td>{{$lista->grupo_id}}</td>
                    <td>{{$lista->recebido}}</td>
                    <td>{{$lista->devolver}}</td>
                    <td>
                    <div class="btn-group">
                         <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                         <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20"></button>
-                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="download( {{ $lista->anexo }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
                     </div>
                    </td>
                </tr>

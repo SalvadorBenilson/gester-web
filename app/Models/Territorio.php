@@ -26,4 +26,6 @@ class Territorio extends Model
     {
         return $this->belongsTo(Grupo::class);
     }
+
+
 }

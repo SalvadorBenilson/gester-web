@@ -31,7 +31,7 @@
 
 @if ($anexo)
 <div class="col-md-6">
-<img class="img-thumbnail" src="{{ $anexo }}" width="200" height="200">
+<img class="img-thumbnail" src="{{ storage/anexos/ksyThifrx8nlMVyzNiAYYNhlZdZ5ULZPyzhns2Yh.png }}" width="200" height="200">
 </div>
 @else
 <div class="col-md-6">

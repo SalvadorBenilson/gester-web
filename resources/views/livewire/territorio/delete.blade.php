@@ -1,7 +1,7 @@
 <!--DIV DO CONTEÚDO-->
 <div class="d-flex justify-content mt-2">
 <div class="alert alert-danger alert-dismissible text-center" role="alert">
-        <p>Deseja Realmente Apagar o Território número {{ $numero }}</p>
+        <p>Deseja Realmente Apagar o Território Número {{ $numero }}</p>
     <input type="hidden" placeholder="id" wire:model.lazy="id">
 </div>
 </div>
