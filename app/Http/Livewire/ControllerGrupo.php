@@ -6,14 +6,12 @@ use Livewire\Component;
 use App\Models\Grupo;
 use App\Models\Territorio;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
 
 class ControllerGrupo extends Component
 {
     public $grupo, $grupo_id, $numero, $quant_pub, $sup, $aju, $tel_sup, $tel_aju, $territorio_id, $t_id, $tt_id;
     public $modal = false;
     public $view = 'show';
-    public $title = 'Lista de Grupo(s)';
     
     use WithPagination;
 
@@ -57,7 +55,6 @@ class ControllerGrupo extends Component
     {
         $this->resetInputFields();
         $this->modal = false;
-        $this->title = 'Lista de Grupo(s)';
     }
 
     public function abrirModal($view)
@@ -73,10 +70,9 @@ class ControllerGrupo extends Component
             $this->resetInputFields();
             $this->modal = true;
             $this->view ='create';
-            $this->title = 'Adicionar Grupo';
             $this->territorio_id = Territorio::pluck('id'); 
             $this->t_id = explode(',', $this->territorio_id);
-            $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
+            $this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id);
     }
 
     public function render()

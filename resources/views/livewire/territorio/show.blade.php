@@ -52,12 +52,12 @@
                <tr>
                     <td>{{ $lista->numero }}</td>
                     <td>{{ $lista->tipo }}</td>
-                    <td><img src="storage/{{ $lista->anexo }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
+                    <td><img src="{{ Storage::url($lista->anexo) }}" class="img-thumbnail rounded" alt="" width="50" height="50"></td>
                     <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20"></button>
-                        <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20"></button>
-                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark" wire:click="download( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20"></button>
+                        <button type="button" class="btn btn-warning btn-sm col-md-2 text-dark text-wrap" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="20" height="20">Editar</button>
+                        <button type="button" class="btn btn-danger btn-sm col-md-2 text-dark text-wrap" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="20" height="20">Eliminar</button>
+                        <button type="button" class="btn btn-success btn-sm col-md-2 text-dark text-wrap" wire:click="download( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="20" height="20">Baixar</button>
                     </div>
                     </td>
                </tr>

@@ -9,7 +9,7 @@ class Publicador extends Model
 {
     use HasFactory;
 
-    protected $table = "publicador";
+    protected $table = 'publicador';
 
     protected $fillable = [
         'nome',

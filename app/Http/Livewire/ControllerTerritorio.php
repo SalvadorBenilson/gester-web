@@ -130,7 +130,7 @@ class ControllerTerritorio extends Component
     {   
         $territorio = Territorio::findOrFail($id);
 
-        return $territorio->anexo;
+        return Storage::url($territorio->anexo);
     }
 
     public function download($id)

@@ -40,6 +40,8 @@ class ControllerPublicador extends Component
         $this->morada = '';
         $this->recebido = '';
         $this->devolver = '';
+        $this->territorio_id = '';
+        $this->grupo_id = '';
     }
 
     public function updated($propertyName)
@@ -57,7 +59,6 @@ class ControllerPublicador extends Component
     {
         $this->resetInputFields();
         $this->modal = false;
-        $this->title = 'Lista de Publicadores';
     }
 
     public function abrirModal($view)
@@ -74,11 +75,11 @@ class ControllerPublicador extends Component
             $this->modal = true;
             $this->view ='create';
             $this->territorio_id = Territorio::pluck('id');
-            $this->grupo_id = Grupo::pluck('id');      
+            $this->grupo_id = Grupo::pluck('id');    
             $this->t_id = explode(',', $this->territorio_id);
             $this->g_id = explode(',', $this->grupo_id);
-            $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
-            $this->gt_id = preg_replace('/[^0-9]/', ' ', $this->g_id); 
+            $this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id); 
+            $this->gt_id = preg_replace("/[^0-9]/", " ", $this->g_id); 
     }
 
     public function render()
