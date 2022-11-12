@@ -7,9 +7,18 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Territorio;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use illuminate\Auth\Access\Responde;
+use illuminate\Support\Facades\Gate;
 
 class ControllerTerritorio extends Component
 {
+    /*Gate::define('delete', function(User $user) {
+        return $user->isAdmin
+        ? Response::allow()
+        : session()->flash('message', 'Você deve ser um Administrador.');
+    });*/ 
+
     public $territorio, $territorio_id, $numero, $tipo, $anexo;
     public $modal = false;
     public $view = 'new';
@@ -23,8 +32,9 @@ class ControllerTerritorio extends Component
     public $search = '';
 
     protected $rules = [
-        'numero' => 'required|unique:territorio,numero',
+        'numero' => 'required',
         'tipo' => 'required',
+        'anexo' => 'required',
     ];
 
     public function resetInputFields()
@@ -67,27 +77,37 @@ class ControllerTerritorio extends Component
             $this->title = 'Adicionar Território';
     }
 
-    public function render()
+    public function render(User $user)
     {
         return view('livewire.territorio.show', [
            
             'territorios' => Territorio::where('numero', 'like', '%'.$this->search.'%')
             ->paginate(10)
-        ])->layout('layouts.app');
+        ], ['users' => $user])->layout('layouts.app');
     }
 
     
     public function store()
     {
         $this->validate();
-    
+
+        if($this->territorio_id)
+        {
         Territorio::updateOrCreate ([
         'id' => $this->territorio_id],
         [
             'numero' => $this->numero,
             'tipo' => $this->tipo,
-            'anexo' => $this->anexo->store('anexos'),
         ]);
+        }else{
+        Territorio::updateOrCreate ([
+        'id' => $this->territorio_id],
+        [
+        'numero' => $this->numero,
+        'tipo' => $this->tipo,
+        'anexo' => $this->anexo->store('public/anexos'),
+        ]); 
+        }
 
         session()->flash('message', 
         $this->territorio_id ? 
@@ -99,7 +119,6 @@ class ControllerTerritorio extends Component
     public function edit($id)
     {
         $territorio = Territorio::findOrFail($id);
-
         $this->territorio_id = $id;
         $this->numero = $territorio->numero;
         $this->tipo = $territorio->tipo;
@@ -111,15 +130,15 @@ class ControllerTerritorio extends Component
 
     public function delete($id)
     {
-        Territorio::destroy($id);
-        session()->flash('message', 'Território Apagado com Sucesso');
+        Territorio::destroy($id); 
+        session()->flash('message', 'Território Apagado com Sucesso'); 
         $this->fecharModal();
     }
 
     public function deleteview($id)
     {
         $territorio = Territorio::findOrFail($id);
-
+        //dd($id);
         $this->territorio_id = $territorio->id;
         $this->numero = $territorio->numero;
         $this->modal = true;

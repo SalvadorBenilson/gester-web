@@ -70,9 +70,10 @@ class ControllerGrupo extends Component
             $this->resetInputFields();
             $this->modal = true;
             $this->view ='create';
-            $this->territorio_id = Territorio::pluck('id'); 
-            $this->t_id = explode(',', $this->territorio_id);
-            $this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id);
+            $this->territorio_id = Territorio::all(); 
+            //return $this->territorio_id->toArray();
+            //$this->t_id = explode(',', $this->territorio_id);
+            //$this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id);
     }
 
     public function render()
@@ -110,7 +111,6 @@ class ControllerGrupo extends Component
     public function edit($id)
     {
         $grupo = Grupo::findOrFail($id);
-
         
         $this->id = $id;
         $this->numero = $grupo->numero;

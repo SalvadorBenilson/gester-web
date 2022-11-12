@@ -9,13 +9,13 @@
 
 <div class="col-md-6">
 <label>Número</label>
-<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model.lazy="numero">
+<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model="numero">
 @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
             
 <div class="col-md-6">
 <label>Tipo</label>
-<select class="form-control form-control-sm" wire:model.lazy="tipo">
+<select class="form-control form-control-sm" wire:model="tipo">
 <option value="Pessoal">Pessoal</option>
 <option value="Grupo">Grupo</option>
 </select>
@@ -24,7 +24,7 @@
 
 <div class="col-md-6">
 <label>Anexo</label>
-<input type="file" class="form-control form-control-sm" wire:model.lazy="anexo">
+<input type="file" class="form-control form-control-sm" wire:model="anexo">
 @error('anexo') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
@@ -36,7 +36,7 @@
 @else
 <div class="col-md-6">
 <img class="img-thumbnail mt-1" src="{{ URL::asset('img/card-image.svg') }}" width="50" height="50">
-<span class="badge bg-info text-dark">Nenhuma Imagem Carregada!</span>
+<span class="badge bg-warning text-dark">Nenhuma Imagem Carregada!</span>
 <span class="badge rounded-pill bg-success text-white" wire:loading wire:target="anexo">Fazendo Upload...</span>
 </div>
 @endif

@@ -17,14 +17,14 @@ class Territorio extends Model
         'anexo',
     ];
 
-    public function publicador()
+    public function publicadors()
     {
-        return $this->belongsTo(Publicador::class);
+        return $this->belongsTo('publicador');
     }
 
-    public function grupo()
+    public function grupos()
     {
-        return $this->belongsTo(Grupo::class);
+        return $this->belongsTo('grupo');
     }
 
 

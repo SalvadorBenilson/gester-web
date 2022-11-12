@@ -9,21 +9,21 @@
 
 <div class="col-md-4">
 <label>Número do Grupo</label>
-<input x-mask="99" type="text" class="form-control form-control-sm" placeholder="Número do Grupo" wire:model.lazy="numero">
+<input x-mask="99" type="text" class="form-control form-control-sm" placeholder="Número do Grupo" wire:model="numero" value="{{ old('numero') }}">
 @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-4">
 <label>Quantidade de Publicadores</label>
-<input x-mask="99" type="text" class="form-control form-control-sm" placeholder="Quantidadde de Publicadores" wire:model.lazy="quant_pub">
+<input x-mask="99" type="text" class="form-control form-control-sm" placeholder="Quantidadde de Publicadores" wire:model="quant_pub" value="{{ old('quant_pub') }}">
 @error('quant_pub') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-4">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id">       
-@forelse ($tt_id as $lista => $value)       
-    <option value="{{ $value }}">{{ $value }}</option>
+@forelse ($territorio_id->territorios as $lista)       
+    <option value="{{ $lista->id }}">{{ $lista->id }}</option>
 @empty
     <option desable>Sem Território Cadastrados</option>
 @endforelse    
@@ -33,25 +33,25 @@
 
 <div class="col-md-6">
 <label>Nome do Superintendente</label>
-<input type="text" class="form-control form-control-sm" placeholder="Nome" wire:model.lazy="sup">
+<input type="text" class="form-control form-control-sm" placeholder="Nome" wire:model="sup" value="{{ old('sup') }}">
 @error('sup') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-6">
 <label>Telefone do Superintendente</label>
-<input x-mask="999-999-999" type="tel" class="form-control form-control-sm" placeholder="Telefone" wire:model.lazy="tel_sup">
+<input x-mask="999-999-999" type="tel" class="form-control form-control-sm" placeholder="Telefone" wire:model="tel_sup" value="{{ old('tel_sup') }}">
 @error('tel_sup') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-6">
 <label>Nome do Ajudante</label>
-<input type="text" class="form-control form-control-sm" placeholder="Nome" wire:model.lazy="aju">
+<input type="text" class="form-control form-control-sm" placeholder="Nome" wire:model="aju" value="{{ old('aju') }}">
  @error('aju') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-6">
 <label>Telefone do Ajudante</label>
-<input x-mask="999-999-999" type="tel" class="form-control form-control-sm" placeholder="Telefone" wire:model.lazy="tel_aju">
+<input x-mask="999-999-999" type="tel" class="form-control form-control-sm" placeholder="Telefone" wire:model="tel_aju" value="{{ old('tel_aju') }}">
 @error('tel_aju') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 

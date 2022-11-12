@@ -1,5 +1,5 @@
 <!--FORM-->
-<form class="row g-2 mb-5" wire:submit.prevent="store" wire:loading.attr="disabled">
+<form class="row g-2 mb-5" wire:loading.attr="disabled">
 
 <!--BUTTON FECHAR MODAL-->
 <div class="col-md-12">
@@ -9,29 +9,29 @@
 
 <div class="col-md-6">
 <label>Número</label>
-<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model.lazy="numero">
+<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model="numero">
 @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
             
 <div class="col-md-6">
 <label>Tipo</label>
-<select class="form-control form-control-sm" wire:model.lazy="tipo">
+<select class="form-control form-control-sm" wire:model="tipo">
 <option value="Pessoal">Pessoal</option>
 <option value="Grupo">Grupo</option>
 </select>
 @error('tipo') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
-<div class="col-md-6">
+<!--<div class="col-md-6">
 <label>Anexo</label>
-<input type="file" class="form-control form-control-sm" wire:model.lazy="anexo">
+<input type="file" class="form-control form-control-sm" wire:model="anexo">
 @error('anexo') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
-
+-->
 
 @if ($anexo)
 <div class="col-md-6">
-<img class="img-thumbnail" src="{{ storage/anexos/ksyThifrx8nlMVyzNiAYYNhlZdZ5ULZPyzhns2Yh.png }}" width="200" height="200">
+<img class="img-thumbnail" src="{{ Storage::url($anexo) }}" width="200" height="200">
 </div>
 @else
 <div class="col-md-6">
@@ -43,8 +43,7 @@
 
 <!--DIV DOS BOTÕES-->
 <div class="btn-group mt-5">
-    <button class="btn btn-success col-md-8 text-white" type="submit">Salvar</button>
-    <button class="btn btn-warning col-md-4 text-dark" wire:click.prevent="resetInputFields">Limpar Formulario</button>           
+    <button class="btn btn-success col-md-8 text-white"  wire:click="store( {{ $territorio_id }} )">Salvar</button>
 </div>
 <!--FIM DA DIV DOS BOTÕES-->
 

@@ -22,13 +22,13 @@ class Publicador extends Model
         'grupo_id',
     ];
 
-    public function territorio()
+    public function territorios()
     {
-        return $this->hasOne(Territorio::class);
+        return $this->hasOne('territorio');
     }
 
-    public function grupo()
+    public function grupos()
     {
-        return $this->hasOne(Grupo::class);
+        return $this->hasOne('grupo');
     }
 }
