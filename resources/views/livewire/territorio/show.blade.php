@@ -55,9 +55,9 @@
                     <td><img src="{{ Storage::url($lista->anexo) }}" class="img-thumbnail rounded" alt="" width="50" height="20"></td>
                     <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-warning text-dark text-wrap btn-sm" wire:click="edit( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="15" height="15">Ver/Editar</button>
-                        <button type="button" class="btn btn-danger text-dark text-wrap btn-sm" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="15" height="15">Eliminar</button>
-                        <button type="button" class="btn btn-success text-dark text-wrap btn-sm" wire:click="download( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="15" height="15">Baixar</button>
+                        <button type="button" class="btn btn-warning text-dark text-wrap btn-sm" wire:click="editview( {{ $lista->id }} )"><img src="{{ asset('/img/pencil-square.svg') }}" alt="Bootstrap" width="15" height="15"> Ver/Editar</button>
+                        <button type="button" class="btn btn-danger text-dark text-wrap btn-sm" wire:click="deleteview( {{ $lista->id }} )"><img src="{{ asset('/img/trash3-fill.svg') }}" alt="Bootstrap" width="15" height="15"> Eliminar</button>
+                        <button type="button" class="btn btn-success text-dark text-wrap btn-sm" wire:click="download( {{ $lista->id }} )"><img src="{{ asset('/img/download.svg') }}" alt="Bootstrap" width="15" height="15"> Baixar</button>
                     </div>
                     </td>
                </tr>

@@ -7,22 +7,12 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Territorio;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
-use illuminate\Auth\Access\Responde;
-use illuminate\Support\Facades\Gate;
 
 class ControllerTerritorio extends Component
 {
-    /*Gate::define('delete', function(User $user) {
-        return $user->isAdmin
-        ? Response::allow()
-        : session()->flash('message', 'Você deve ser um Administrador.');
-    });*/ 
-
     public $territorio, $territorio_id, $numero, $tipo, $anexo;
     public $modal = false;
-    public $view = 'new';
-    public $title = 'Lista de Território(s)';
+    public $view = 'show';
     
     use WithFileUploads;
     use WithPagination;
@@ -56,14 +46,20 @@ class ControllerTerritorio extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function fecharModal()
     {
+        $this->resetInputFields();
         $this->modal = false;
-        $this->title = 'Lista de Território(s)';
     }
 
     public function abrirModal($view)
     {
+        $this->resetInputFields();
         $this->modal = true;
         return view("livewire.territorio.$view");
     }
@@ -71,19 +67,17 @@ class ControllerTerritorio extends Component
     
     public function new()
     {
-            $this->resetInputFields();
-            $this->modal = true;
-            $this->view ='create';
-            $this->title = 'Adicionar Território';
+        $this->view ='create';
+        $this->abrirModal($this->view);
     }
 
-    public function render(User $user)
+    public function render()
     {
         return view('livewire.territorio.show', [
            
             'territorios' => Territorio::where('numero', 'like', '%'.$this->search.'%')
             ->paginate(10)
-        ], ['users' => $user])->layout('layouts.app');
+        ])->layout('layouts.app');
     }
 
     
@@ -116,7 +110,7 @@ class ControllerTerritorio extends Component
         $this->fecharModal();
     }
 
-    public function edit($id)
+    public function editview($id)
     {
         $territorio = Territorio::findOrFail($id);
         $this->territorio_id = $id;
@@ -125,7 +119,6 @@ class ControllerTerritorio extends Component
         $this->anexo = $territorio->anexo;
         $this->modal = true;
         $this->view = 'edit';
-        $this->title = 'Editar Território';
     }
 
     public function delete($id)
@@ -138,18 +131,10 @@ class ControllerTerritorio extends Component
     public function deleteview($id)
     {
         $territorio = Territorio::findOrFail($id);
-        //dd($id);
         $this->territorio_id = $territorio->id;
         $this->numero = $territorio->numero;
         $this->modal = true;
         $this->view = 'delete';
-    }
-
-    public function anexo($id)
-    {   
-        $territorio = Territorio::findOrFail($id);
-
-        return Storage::url($territorio->anexo);
     }
 
     public function download($id)

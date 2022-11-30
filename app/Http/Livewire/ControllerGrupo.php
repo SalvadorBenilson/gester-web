@@ -37,7 +37,7 @@ class ControllerGrupo extends Component
         $this->aju = '';
         $this->tel_sup = '';
         $this->tel_aju = '';
-        $this->territorio_id = '';
+        //$this->territorio_id = '';
     }
 
     public function updated($propertyName)
@@ -67,10 +67,9 @@ class ControllerGrupo extends Component
     
     public function new()
     {
-            $this->resetInputFields();
-            $this->modal = true;
-            $this->view ='create';
-            $this->territorio_id = Territorio::all(); 
+        $this->view ='create';
+        $this->abrirModal($this->view);
+        $this->territorio_id = Territorio::pluck('id'); 
             //return $this->territorio_id->toArray();
             //$this->t_id = explode(',', $this->territorio_id);
             //$this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id);

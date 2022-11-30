@@ -10,9 +10,6 @@ use Livewire\Component;
 
 class ControllerDashboard extends Component
 {
-
-    public $publicador;
-
     public function render()
     {
         return view('livewire.dashboard', [

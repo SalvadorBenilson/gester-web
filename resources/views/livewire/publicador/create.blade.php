@@ -33,23 +33,23 @@
 
 <div class="col-md-6">
 <label>Recebido em:</label>
-<input x-mask="99/99/9999" type="date" class="form-control form-control-sm" wire:model="recebido" value="old{{ $recebido }}" wire.keydown.down="calcularDataDevolucao">
+<input x-mask="99/99/9999" type="date" class="form-control form-control-sm" wire:model="recebido" value="old{{ $recebido }}" wire.keydown.enter="calcularDataDevolucao()">
 @error('recebido') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-6">
 <label>Devolver em:</label>
-<input x-mask="99/99/9999" type="date" class="form-control form-control form-control-sm" wire:model="devolver" value="old{{ $devolver }}">
+<input x-mask="99/99/9999" type="date" class="form-control form-control form-control-sm" wire:model="devolver" value="old{{ $devolver }}" >
 @error('devolver') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
 
 <div class="col-md-6">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id">       
-@forelse ($tt_id as $lista => $value)       
-    <option value="{{ $value }}">{{ $value }}</option>
+@forelse ($territorio_id as $lista)       
+    <option wire:key="{{ $lista }}">{{ $lista }}</option>
 @empty
-    <option desable>Sem Território Cadastrados</option>
+    <option disabled>Sem Território Cadastrados</option>
 @endforelse    
 </select>
 @error('territorio_id') <span class="text-danger error">{{ $message }}</span> @enderror
@@ -58,10 +58,10 @@
 <div class="col-md-6">
 <label>Grupo Nº</label>
 <select class="form-control form-control-sm" wire:model="grupo_id">
-@forelse ($gt_id as $lista => $value)       
-    <option value="{{ $value }}">{{ $value }}</option>
+@forelse ($grupo_id as $lista)       
+    <option wire:key="{{ $lista }}">{{ $lista }}</option>
 @empty
-    <option desable>Sem Grupo Cadastrados</option>
+    <option disabled>Sem Grupo Cadastrados</option>
 @endforelse      
 </select>
 @error('grupo_id') <span class="text-danger error">{{ $message }}</span> @enderror

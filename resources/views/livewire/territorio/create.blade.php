@@ -8,8 +8,8 @@
 <!--FIM BUTTON FECHAR MODAL-->
 
 <div class="col-md-6">
-<label>Número</label>
-<input type="number" class="form-control form-control-sm" placeholder="Número do Território" wire:model="numero">
+<label>Número do Grupo</label>
+<input type="number" class="form-control form-control-sm" placeholder="Número do Grupo" wire:model="numero">
 @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
 </div>
             
@@ -44,7 +44,7 @@
 
 <!--DIV DOS BOTÕES-->
 <div class="btn-group mt-5">
-    <button class="btn btn-success col-md-8 text-white" type="submit">Salvar</button>
+    <button class="btn btn-success col-md-8 text-white" type="submit" wire:offline.attr="disabled">Salvar</button>
     <button class="btn btn-warning col-md-4 text-dark" wire:click.prevent="resetInputFields">Limpar</button>           
 </div>
 <!--FIM DA DIV DOS BOTÕES-->

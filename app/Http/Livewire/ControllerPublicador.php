@@ -40,15 +40,12 @@ class ControllerPublicador extends Component
         $this->morada = '';
         $this->recebido = '';
         $this->devolver = '';
-        $this->territorio_id = '';
-        $this->grupo_id = '';
     }
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
     }
-
 
     public function updatingSearch()
     {
@@ -71,22 +68,22 @@ class ControllerPublicador extends Component
     
     public function new()
     {
-            $this->resetInputFields();
-            $this->modal = true;
-            $this->view ='create';
-            $this->territorio_id = Territorio::pluck('id');
-            $this->grupo_id = Grupo::pluck('id');    
-            $this->t_id = explode(',', $this->territorio_id);
-            $this->g_id = explode(',', $this->grupo_id);
-            $this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id); 
-            $this->gt_id = preg_replace("/[^0-9]/", " ", $this->g_id); 
+        $this->view ='create';
+        $this->abrirModal($this->view);
+        $this->territorio_id = Territorio::pluck('id');
+        $this->grupo_id = Grupo::pluck('id');    
+        //$this->t_id = explode(',', $this->territorio_id);
+        //$this->g_id = explode(',', $this->grupo_id);
+        //$this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id); 
+        //$this->gt_id = preg_replace("/[^0-9]/", " ", $this->g_id); 
     }
 
     public function render()
     {
         return view('livewire.publicador.show', [
            
-            'publicadors' => Publicador::where('nome', 'like', '%'.$this->search.'%')->paginate(10)
+            'publicadors' => Publicador::where('nome', 'like', '%'.$this->search.'%')
+            ->paginate(10)
         ])->layout('layouts.app');
     }
 
@@ -118,7 +115,6 @@ class ControllerPublicador extends Component
     public function edit($id)
     {
         $publicador = Publicador::findOrFail($id);
-
         $this->publicador_id = $id;
         $this->nome = $publicador->nome;
         $this->telefone = $publicador->telefone;
@@ -130,14 +126,6 @@ class ControllerPublicador extends Component
         $this->grupo_id = $publicador->grupo_id;
         $this->modal = true;
         $this->view = 'edit';
-        $this->title = 'Editar Publicador';
-
-        $this->territorio_id = Territorio::pluck('id');
-        $this->grupo_id = Grupo::pluck('id');      
-        $this->t_id = explode(',', $this->territorio_id);
-        $this->g_id = explode(',', $this->grupo_id);
-        $this->tt_id = preg_replace('/[^0-9]/', ' ', $this->t_id); 
-        $this->gt_id = preg_replace('/[^0-9]/', ' ', $this->g_id); 
     }
 
     public function delete($id)
@@ -150,7 +138,6 @@ class ControllerPublicador extends Component
     public function deleteview($id)
     {
         $publicador = Publicador::findOrFail($id);
-
         $this->publicador_id = $publicador->id;
         $this->nome = $publicador->nome;
         $this->modal = true;
@@ -160,6 +147,7 @@ class ControllerPublicador extends Component
     // Metodo que calcula a data de devoluação para 4 meses ou seja 120 dias depois da data escolhida do recebido
     public function calcularDataDevolucao()
     {
-        $this->devolver = $this->recebido->day('120');
+        $this->recebido = $this->devolver->day('120');
+
     }
 }

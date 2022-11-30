@@ -22,10 +22,10 @@
 <div class="col-md-4">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id">       
-@forelse ($territorio_id->territorios as $lista)       
-    <option value="{{ $lista->id }}">{{ $lista->id }}</option>
+@forelse ($territorio_id as $lista)       
+    <option wire:key="{{ $lista }}">{{ $lista }}</option>
 @empty
-    <option desable>Sem Território Cadastrados</option>
+    <option disabled>Sem Território Cadastrados</option>
 @endforelse    
 </select>
 @error('territorio_id') <span class="text-danger error">{{ $message }}</span> @enderror

@@ -2,7 +2,7 @@
 <form class="row g-2 mb-5" wire:submit.prevent="store" wire:loading.attr="disabled">
 
 <!--BUTTON FECHAR MODAL-->
-<div class="col">
+<div class="col-md-12">
     <button class="btn-close" wire:click="fecharModal"></button>
 </div>
 <!--FIM BUTTON FECHAR MODAL-->
