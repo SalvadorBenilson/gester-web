@@ -46,8 +46,8 @@
 <div class="col-md-6">
 <label>Territorio Nº</label>
 <select class="form-control form-control-sm" wire:model="territorio_id">       
-@forelse ($territorio_id as $lista)       
-    <option wire:key="{{ $lista }}">{{ $lista }}</option>
+@forelse ($publicador as $lista)       
+    <option wire:key="{{ $lista->territorio->id }}">{{ $lista->territorio->id }}</option>
 @empty
     <option disabled>Sem Território Cadastrados</option>
 @endforelse    
@@ -58,8 +58,8 @@
 <div class="col-md-6">
 <label>Grupo Nº</label>
 <select class="form-control form-control-sm" wire:model="grupo_id">
-@forelse ($grupo_id as $lista)       
-    <option wire:key="{{ $lista }}">{{ $lista }}</option>
+@forelse ($publicador as $lista)       
+    <option wire:key="{{ $lista->grupo->id }}">{{ $lista->grupo->id }}</option>
 @empty
     <option disabled>Sem Grupo Cadastrados</option>
 @endforelse      

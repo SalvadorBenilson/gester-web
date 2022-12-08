@@ -21,18 +21,18 @@ return new class extends Migration
             $table->string('aju', 255);
             $table->string('tel_sup', 15);
             $table->string('tel_aju', 15);
-            $table->unsignedBigInteger('territorio_id');
+            $table->foreignId('territorio_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
 
-        Schema::table('grupo', function (Blueprint $table) {
+        /*Schema::table('grupo', function (Blueprint $table) {
             $table->foreign('territorio_id')
             ->constrained()
             ->onUpdate('cascade')
             ->onDelete('cascade')
             ->references('id')
             ->on('territorio');
-        });
+        });*/
     }
 
     /**

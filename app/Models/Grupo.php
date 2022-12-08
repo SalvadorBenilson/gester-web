@@ -21,13 +21,14 @@ class Grupo extends Model
         'territorio_id',
     ];
 
-    public function publicador()
-    {
-        return $this->belongsTo(Publicador::class);
-    }
-
+    
     public function territorio()
     {
         return $this->hasOne(Territorio::class);
+    }
+    
+    public function publicador()
+    {
+        return $this->belongsTo(Publicador::class);
     }
 }

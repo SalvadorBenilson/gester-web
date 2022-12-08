@@ -34,7 +34,7 @@
 </div>
 <!--FIM DIV DO CAMPO PESQUISAR-->
 <div class="table-responsive">
-        {{ $publicadors->links() }}
+
         <table class="table table-sm table-hover">
             <thead>
                 <tr>
@@ -56,8 +56,8 @@
                    <td>{{$lista->telefone}}</td>
                    <td>{{$lista->email}}</td>
                    <td>{{$lista->morada}}</td>
-                   <td>{{$lista->territorio_id}}</td>
-                   <td>{{$lista->grupo_id}}</td>
+                   <td><img src="{{ Storage::url($lista->territorio->anexo) }}" class="img-thumbnail rounded" alt="" width="50" height="20"></td>
+                   <td>{{$lista->grupo->numero}}</td>
                    <td>{{$lista->recebido}}</td>
                    <td>{{$lista->devolver}}</td>
                    <td>
@@ -76,7 +76,7 @@
             @endforelse
            </tbody>
         </table>
-        {{ $publicadors->links() }}
+
 </div>
 <!--FIM DA DIV DA TABELA-->
 

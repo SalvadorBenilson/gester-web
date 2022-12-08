@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Publicador;
 use App\Models\Territorio;
 use App\Models\Grupo;
+use Illuminate\Http\Request;
 
 class ControllerPublicador extends Component
 {
@@ -70,8 +71,8 @@ class ControllerPublicador extends Component
     {
         $this->view ='create';
         $this->abrirModal($this->view);
-        $this->territorio_id = Territorio::pluck('id');
-        $this->grupo_id = Grupo::pluck('id');    
+        $this->publicador = Publicador::with('territorio', 'grupo')->latest()->get();
+        //$this->grupo_id = Grupo::with('grupo:id')->get();  
         //$this->t_id = explode(',', $this->territorio_id);
         //$this->g_id = explode(',', $this->grupo_id);
         //$this->tt_id = preg_replace("/[^0-9]/", " ", $this->t_id); 
@@ -82,28 +83,18 @@ class ControllerPublicador extends Component
     {
         return view('livewire.publicador.show', [
            
-            'publicadors' => Publicador::where('nome', 'like', '%'.$this->search.'%')
-            ->paginate(10)
+            'publicadors' => Publicador::with('territorio', 'grupo')
+            ->where('nome', 'like', '%'.$this->search.'%')
+            ->latest()
+            ->get(),
+            //->paginate(10),
         ])->layout('layouts.app');
     }
 
     
-    public function store()
+    public function store(Request $request)
     {
-            $this->validate();
-    
-            Publicador::updateOrCreate ([
-            'id' => $this->publicador_id], 
-            [
-                'nome' => $this->nome,
-                'telefone' => $this->telefone,
-                'email' => $this->email,
-                'morada' => $this->morada,
-                'recebido' => $this->recebido,
-                'devolver' => $this->devolver,
-                'territorio_id' => $this->territorio_id,
-                'grupo_id' => $this->grupo_id
-            ]);
+            $request->territorio()->grupo()->publicador()->create($this->validate());
     
             session()->flash('message', 
             $this->publicador_id ? 

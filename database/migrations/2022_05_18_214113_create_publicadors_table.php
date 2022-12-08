@@ -14,6 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('publicador', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             $table->string('nome', 255);
             $table->string('telefone', 15);
@@ -21,12 +24,12 @@ return new class extends Migration
             $table->string('morada', 255);
             $table->date('recebido');
             $table->date('devolver');
-            $table->unsignedBigInteger('territorio_id');
-            $table->unsignedBigInteger('grupo_id');
+            $table->foreignId('territorio_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('grupo_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
 
-        Schema::table('publicador', function (Blueprint $table) {
+        /*Schema::table('publicador', function (Blueprint $table) {
             $table->foreign('territorio_id')
             ->constrained()
             ->onUpdate('cascade')
@@ -43,6 +46,7 @@ return new class extends Migration
             ->references('id')
             ->on('grupo');
         });
+        */
     }
 
     /**
